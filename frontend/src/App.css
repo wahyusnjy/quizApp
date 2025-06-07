@@ -1,0 +1,23 @@
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 250px 1fr; 
+    height: 100vh;
+}
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
+    }
+}
+.radial-progress {
+    --value: 0;
+    --size: 4rem;
+    --thickness: 8px;
+}
+.animate-grow {
+    animation: grow 0.5s ease-out forwards;
+}
+@keyframes grow {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
