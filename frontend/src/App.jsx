@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import Sidebar from './components/Sidebar/Sidebar';
-import Header from './components/Header/Header';
+
 import DashboardContent from './components/MainMenu/Dashboard';
+import Quizzes from './components/MainMenu/Quizzes';
+import Questions from './components/MainMenu/Questions';
+import Analytics from './components/MainMenu/Analytics';
+import Users from './components/MainMenu/Users';
+import Settings from './components/MainMenu/Settings';
 import './App.css'
 
 const App = () => {
@@ -38,13 +43,13 @@ const App = () => {
           darkMode={darkMode}
         />
         <main className={`p-4 md:p-6 overflow-auto bg-gray-700`}>
-          <Header 
-            sidebarOpen={sidebarOpen}
-            toggleSidebar={toggleSidebar}
-            toggleDarkMode={toggleDarkMode}
-          />
-
+  
           {activeTab === 'dashboard' && <DashboardContent darkMode={darkMode} />}
+          {activeTab === 'quizzes' && <Quizzes darkMode={darkMode} />}
+          {activeTab === 'questions' && <Questions darkMode={darkMode} />}
+          {activeTab === 'analytics' && <Analytics darkMode={darkMode} />}
+          {activeTab === 'users' && <Users darkMode={darkMode} />}
+          {activeTab === 'settings' && <Settings darkMode={darkMode} />}
           {/* Tambahkan komponen lain untuk tab lainnya */}
         </main>
       </div>

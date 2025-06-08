@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  php:
+    build: ./backend
+    ports:
+      - "8080:80"  # backend PHP expose ke 8080
+    volumes:
+      - ./backend:/var/www/html
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: quizMaster
+    ports:
+      - "3308:3306"  # expose MySQL ke 3308 (host:container)
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./backend/docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "12000:12000"  # expose frontend (Vite) ke 12000
+    volumes:
+      - ./frontend:/app
+      - /app/node
